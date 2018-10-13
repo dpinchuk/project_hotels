@@ -46,8 +46,11 @@ public class BasePageTest {
     /*----------------------------------------------------------------------------------------------------------------*/
 
     /**
+     * @Author Nataliya Nagibina
+     * Positive test
+     * test-001_p
      *
-     *
+     * Тест проверяет отображение количества ночей
      *
      *
      *
@@ -55,7 +58,7 @@ public class BasePageTest {
      * // Описание теста
      */
     @Test
-    public void test() {
+    public void test_001_p() {
         this.bpc.searchHotels(TEST_CITY, DAYS);
         WebElement webElement = this.bpc.getDriver().findElement(By.xpath("//*[@id='qf-0q-nights']/span[1]/span"));
         assertEquals(String.valueOf(DAYS), webElement.getText());

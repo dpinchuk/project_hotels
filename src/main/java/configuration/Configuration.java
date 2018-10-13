@@ -5,7 +5,7 @@ public interface Configuration {
     String URL = "https://www.hotels.com/?pos=HCOM_US&locale=en_US";
     String WEB_DRIVER = "chrome";
     String PROPERTY_CHROM_DRIVER = "webdriver.chrom.driver";
-    String PATH_TO_WEB_DRIVER = "chromedriver.exe";
+    String PATH_TO_WEB_DRIVER = "src/main/resources/chromdriver/2.40/chromedriver.exe";
 
     String DATE_FORMAT = "MM/dd/yy";
 
