@@ -2,7 +2,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import static configuration.Configuration.CHECK_IN_DATE;
+import static configuration.Configuration.CHECK_IN;
 import static configuration.Configuration.DATE_FORMAT;
 
 public class Main {
@@ -15,7 +15,7 @@ public class Main {
         System.out.println(currentDate);
 
         String[] arrayDate = currentDate.split("/");
-        currentDate = arrayDate[0] + "/" + String.valueOf((Integer.parseInt(arrayDate[1]) + CHECK_IN_DATE)) + "/" + arrayDate[2];
+        currentDate = arrayDate[0] + "/" + String.valueOf((Integer.parseInt(arrayDate[1]) + CHECK_IN)) + "/" + arrayDate[2];
         System.out.println(currentDate);
 
 

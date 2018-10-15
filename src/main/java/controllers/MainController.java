@@ -8,7 +8,7 @@ import static configuration.Configuration.*;
 
 public class MainController {
 
-    private WebDriver driver;
+    private static WebDriver driver;
 
     public void initTestEnvironment() {
         /*Настройка тестовой среды*/
@@ -17,19 +17,19 @@ public class MainController {
 
         /*Настройка тестового окружения*/
         System.setProperty(PROPERTY_CHROM_DRIVER, PATH_TO_WEB_DRIVER);
-        this.driver = new ChromeDriver();
+        driver = new ChromeDriver();
         System.out.println("WEB-Driver: [" + WEB_DRIVER + "] initialization success!");
 
         /*Настройки страницы браузера*/
-        this.driver.manage().window().maximize();
-        this.driver.manage().timeouts().implicitlyWait(TIME_OUT_WAIT, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(TIME_OUT_WAIT, TimeUnit.SECONDS);
 
         /*В коммандную строку браузера ввести URL*/
-        this.driver.get(URL);
+        driver.get(URL);
     }
 
     public WebDriver getDriver() {
-        return this.driver;
+        return driver;
     }
 
 }

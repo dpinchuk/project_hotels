@@ -35,6 +35,7 @@ public class BasePageTest {
     @After
     public void tearDown() {
         // Закрыть браузер и завершить работу теста
+        this.bpc.getDriver().close();
     }
 
     @AfterClass
@@ -50,21 +51,14 @@ public class BasePageTest {
      * Positive test
      * test-001_p
      *
-     * Тест проверяет отображение количества ночей
+     * Тест проверяет отображение количества ночей, указанных в Check in и Check out выбранного города
      *
-     *
-     *
-     *
-     * // Описание теста
      */
     @Test
     public void test_001_p() {
         this.bpc.searchHotels(TEST_CITY, DAYS);
         WebElement webElement = this.bpc.getDriver().findElement(By.xpath("//*[@id='qf-0q-nights']/span[1]/span"));
         assertEquals(String.valueOf(DAYS), webElement.getText());
-
-        // тест собственно :)
-        // Здесь только проверка результата Asset()!
     }
 
 }
