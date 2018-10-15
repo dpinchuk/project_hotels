@@ -12,6 +12,10 @@ public interface Configuration {
     String TEST_CITY = "New York, New York, United States of America";
     int DAYS = 7;
     int CHECK_IN = 1;
+    int ROOMS = 1;
+    int ADULTS = 2;
+    int CHILDREN = 2;
+    int[] CHILD_AGE = {2, 3};
 
     int TIME_OUT_WAIT = 10;
 }

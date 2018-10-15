@@ -35,7 +35,7 @@ public class BasePageTest {
     @After
     public void tearDown() {
         // Закрыть браузер и завершить работу теста
-        this.bpc.getDriver().close();
+        //this.bpc.getDriver().close();
     }
 
     @AfterClass
@@ -59,6 +59,21 @@ public class BasePageTest {
         this.bpc.searchHotels(TEST_CITY, DAYS);
         WebElement webElement = this.bpc.getDriver().findElement(By.xpath("//*[@id='qf-0q-nights']/span[1]/span"));
         assertEquals(String.valueOf(DAYS), webElement.getText());
+    }
+
+    /**
+     * @Author Nataliya Nagibina
+     * Positive test
+     * test-002_p
+     *
+     * Тест проверяет отображение количества ночей, указанных в Check in и Check out выбранного города
+     *
+     */
+    @Test
+    public void test_002_p() {
+        this.bpc.searchHotelsWithRooms(TEST_CITY, DAYS, ROOMS, ADULTS, CHILDREN, CHILD_AGE);
+        //WebElement webElement = this.bpc.getDriver().findElement(By.xpath("//*[@id='qf-0q-nights']/span[1]/span"));
+        //assertEquals(String.valueOf(DAYS), webElement.getText());
     }
 
 }
