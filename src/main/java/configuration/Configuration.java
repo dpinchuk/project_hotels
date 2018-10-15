@@ -10,9 +10,8 @@ public interface Configuration {
     String DATE_FORMAT = "MM/dd/yy";
 
     String TEST_CITY = "New York, New York, United States of America";
-    int DAYS = 17;
+    int DAYS = 7;
     int CHECK_IN = 1;
 
     int TIME_OUT_WAIT = 10;
-
 }
