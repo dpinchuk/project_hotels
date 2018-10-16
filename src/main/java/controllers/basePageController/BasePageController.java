@@ -112,7 +112,10 @@ public class BasePageController extends MainController {
 
         this.webElement = this.mainController.getDriver().findElement(By.xpath("//*[@id='listings']/ol"));
         List<WebElement> elements = this.webElement.findElements(By.xpath("//li"));
-        elements.forEach(System.out::println);
+
+        System.out.println(elements.get(0).getText());
+
+        elements.forEach(e -> System.out.println(e.getText()));
 
         this.webElement.click();
 
