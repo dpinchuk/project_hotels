@@ -4,6 +4,7 @@ import controllers.basePageController.BasePageController;
 import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import services.basePageService.BasePageService;
 
 import static configuration.Configuration.*;
 import static org.junit.Assert.assertEquals;
@@ -15,7 +16,7 @@ import static org.junit.Assert.assertTrue;
 public class BasePageTest {
 
     private BasePageController bpc;
-
+    private BasePageService bps;
 
     /*----------------------------------------------------------------------------------------------------------------*/
     /*----------------------------------------------------------------------------------------------------------------*/
@@ -72,8 +73,23 @@ public class BasePageTest {
     @Test
     public void test_002_p() {
         this.bpc.searchHotelsWithRooms(TEST_CITY, DAYS, ROOMS, ADULTS, CHILDREN, CHILD_AGE);
-        //WebElement webElement = this.bpc.getDriver().findElement(By.xpath("//*[@id='qf-0q-nights']/span[1]/span"));
-        //assertEquals(String.valueOf(DAYS), webElement.getText());
+        WebElement webElement = this.bpc.getDriver().findElement(By.xpath("//*[@id=\"listings\"]/ol/li[1]/article/div/div[3]/div[1]/a/span/ins"));
+        this.bps = new BasePageService();
+        assertTrue(this.bps.isValidNumber(webElement.getText(), 200, 300));
+    }
+
+    /**
+     * @Author Nataliya Nagibina
+     * Positive test
+     * test-003_p
+     *
+     * Тест проверяет наличие в таблице поиска по городу указанной строки
+     *
+     */
+    @Test
+    public void test_003_p() {
+        boolean isTextInTable = this.bpc.isSearchTextInTable(TEST_CITY, "John F. Kennedy");
+        assertTrue(isTextInTable);
     }
 
 }

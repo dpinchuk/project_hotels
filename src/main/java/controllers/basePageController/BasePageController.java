@@ -32,6 +32,20 @@ public class BasePageController extends MainController {
         // В данное поле ввести значения города
         this.webElement.sendKeys(city);
 
+        WebElement baseTable = this.mainController.getDriver().findElement(By.tagName("table"));
+        List<WebElement> tableRows = baseTable.findElements(By.tagName("tbody"));
+        tableRows.forEach(e -> System.out.println(e.getText()));
+
+        try {
+            Thread.sleep(300);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        List<WebElement> listCity = this.mainController.getDriver().findElements(By.className("autosuggest-transport"));
+
+        listCity.forEach(System.out::println);
+
         // Найти на странице элемент с xpath = "//*[@id='qf-0q-localised-check-in']"
         this.webElement = this.mainController.getDriver().findElement(By.xpath("//*[@id='qf-0q-localised-check-in']"));
 
@@ -109,16 +123,27 @@ public class BasePageController extends MainController {
 
         this.webElement = this.mainController.getDriver().findElement(By.xpath("//*[@id='main-content']/div/div/div[1]/div/div/div/div[1]/div/form/div[5]/button"));
         this.webElement.click();
+    }
 
-        this.webElement = this.mainController.getDriver().findElement(By.xpath("//*[@id='listings']/ol"));
-        List<WebElement> elements = this.webElement.findElements(By.xpath("//li"));
+    public boolean isSearchTextInTable(String city, String text) {
+        // Найти на странице элемент с xpath="//*[@id='qf-0q-destination']" (строка поиска по городу в блоке Search Hotels)
+        this.webElement = this.mainController.getDriver().findElement(By.xpath("//*[@id='qf-0q-destination']"));
 
-        System.out.println(elements.get(0).getText());
+        // Очистить данное поле
+        this.webElement.clear();
 
-        elements.forEach(e -> System.out.println(e.getText()));
+        // В данное поле ввести значения города
+        this.webElement.sendKeys(city);
 
-        this.webElement.click();
-
+        WebElement baseTable = this.mainController.getDriver().findElement(By.tagName("table"));
+        List<WebElement> tableRows = baseTable.findElements(By.tagName("tbody"));
+        tableRows.forEach(e -> System.out.println(e.getText()));
+        for (WebElement e: tableRows) {
+            if (e.getText().contains(text)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

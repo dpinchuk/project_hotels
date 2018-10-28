@@ -19,4 +19,15 @@ public class BasePageService extends MainService {
         return dateFormat.format(calendar.getTime());
     }
 
+    public boolean isValidNumber(String str, int min, int max) {
+        int num = 0;
+        try {
+            num = Integer.parseInt(str);
+        } catch(Exception e) {
+            str = str.substring(1, str.length());
+        }
+        num = Integer.parseInt(str);
+        return num >= min && num <= max;
+    }
+
 }
